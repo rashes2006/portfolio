@@ -37,7 +37,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="min-h-screen relative flex items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden bg-[#F4F7F9] dark:bg-[#0C0C0C] text-[#0C0C0C] dark:text-[#D7E2EA] transition-colors duration-300"
+      className="min-h-screen relative flex items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden"
     >
       {/* Decorative 3D images (Ambient Floating + Interactive Hover) */}
       {DECORATIVE_IMAGES.map((img, i) => (
@@ -92,7 +92,7 @@ export default function AboutSection() {
         {/* Animated paragraph */}
         <AnimatedText
           text={ABOUT_TEXT}
-          className="text-[#0C0C0C] dark:text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px] transition-colors duration-300"
+          className="text-[#D7E2EA] font-medium text-center leading-relaxed max-w-[560px]"
           style={{ fontSize: 'clamp(1rem, 2vw, 1.35rem)' }}
         />
 

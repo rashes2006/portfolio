@@ -7,11 +7,11 @@ import CursorTrackingAvatar from '../components/CursorTrackingAvatar';
 const NAV_LINKS = ['About', 'Projects', 'Contact'];
 
 interface HeroSectionProps {
-  isDark: boolean;
-  toggleTheme: () => void;
+  isFlashlight: boolean;
+  toggleFlashlight: () => void;
 }
 
-export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
+export default function HeroSection({ isFlashlight, toggleFlashlight }: HeroSectionProps) {
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -46,13 +46,13 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
     };
   }, []);
 
-  const showCursor = isDark;
+  const showCursor = isFlashlight;
 
   return (
     <section
       ref={heroRef}
       id="hero"
-      className={`h-screen flex flex-col relative bg-[#F4F7F9] dark:bg-[#0C0C0C] transition-colors duration-300 ${
+      className={`h-screen flex flex-col relative bg-[#0C0C0C] text-[#D7E2EA] ${
         showCursor ? 'cursor-none' : 'cursor-default'
       }`}
       style={{
@@ -66,7 +66,7 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
         <div className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
           <a
             href="#hero"
-            className="text-[#0C0C0C] dark:text-[#D7E2EA] font-semibold text-base sm:text-lg md:text-xl uppercase tracking-widest transition-colors duration-300"
+            className="text-[#D7E2EA] font-semibold text-base sm:text-lg md:text-xl uppercase tracking-widest"
           >
             Rashes
           </a>
@@ -76,7 +76,7 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
-                className="text-[#0C0C0C] dark:text-[#D7E2EA] font-medium uppercase tracking-wider
+                className="text-[#D7E2EA] font-medium uppercase tracking-wider
                   text-xs sm:text-sm md:text-base lg:text-[1.1rem]
                   transition-all duration-200 hover:opacity-75"
               >
@@ -85,11 +85,12 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
             ))}
 
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full border border-black/10 dark:border-white/10 text-[#0C0C0C] dark:text-[#D7E2EA] bg-black/5 dark:bg-white/5 hover:bg-black/10 dark:hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              aria-label="Toggle theme"
+              onClick={toggleFlashlight}
+              className="p-2 rounded-full border border-white/10 text-[#D7E2EA] bg-white/5 hover:bg-white/10 transition-all duration-300 cursor-pointer"
+              title={isFlashlight ? 'Turn on room light' : 'Turn off room light'}
+              aria-label="Toggle flashlight effect"
             >
-              {isDark ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
+              {isFlashlight ? <Sun className="w-4 h-4 sm:w-5 sm:h-5" /> : <Moon className="w-4 h-4 sm:w-5 sm:h-5" />}
             </button>
           </div>
         </div>
@@ -116,8 +117,8 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
       <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 relative z-0">
         <FadeIn delay={0.35} y={20}>
           <p
-            className="text-[#0C0C0C] dark:text-[#D7E2EA] font-light uppercase tracking-wide leading-snug
-              max-w-[150px] sm:max-w-[220px] md:max-w-[260px] transition-colors duration-300"
+            className="text-[#D7E2EA] font-light uppercase tracking-wide leading-snug
+              max-w-[150px] sm:max-w-[220px] md:max-w-[260px]"
             style={{ fontSize: 'clamp(0.72rem, 1.4vw, 1.5rem)' }}
           >
             a web developer driven by crafting clean, interactive, and high-performance websites
@@ -129,8 +130,8 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
         </FadeIn>
       </div>
 
-      {/* Spotlight Flashlight Mask Overlay — z-10 (hides everything at z-0 except in spotlight circle, active only in Dark Mode) */}
-      {isDark && (
+      {/* Spotlight Flashlight Mask Overlay — z-10 (hides everything at z-0 except in spotlight circle, active only in Flashlight Mode) */}
+      {isFlashlight && (
         <div
           className="absolute inset-0 pointer-events-none z-10"
           style={{
@@ -155,7 +156,7 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
         />
       </FadeIn>
 
-      {/* Custom Vector Flashlight & Volumetric Beam Cursor — z-30 (visible in dark mode only on desktops) */}
+      {/* Custom Vector Flashlight & Volumetric Beam Cursor — z-30 (visible in flashlight mode) */}
       {showCursor && (
         <svg
           width="300"

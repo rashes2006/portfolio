@@ -11,14 +11,9 @@
 }
 
 :root {
-  --hover-char-color: #7621B0;
-  --hover-char-glow: rgba(118, 33, 176, 0.4);
-  --spotlight-radius: 110px;
-}
-
-.dark {
   --hover-char-color: #BBCCD7;
   --hover-char-glow: rgba(187, 204, 215, 0.8);
+  --spotlight-radius: 110px;
 }
 
 @media (min-width: 640px) {
@@ -36,19 +31,11 @@
 html,
 body,
 #root {
-  @apply bg-[#F4F7F9] dark:bg-[#0C0C0C] transition-colors duration-300;
+  background: #0C0C0C;
   font-family: 'Kanit', sans-serif;
 }
 
 .hero-heading {
-  background: linear-gradient(180deg, #1A1C20 0%, #5E6573 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  transition: background 0.3s ease;
-}
-
-.dark .hero-heading {
   background: linear-gradient(180deg, #646973 0%, #BBCCD7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

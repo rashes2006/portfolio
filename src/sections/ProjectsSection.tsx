@@ -54,12 +54,10 @@ function ProjectCard({
   project,
   index,
   totalCards,
-  isDark,
 }: {
   project: (typeof PROJECTS)[number];
   index: number;
   totalCards: number;
-  isDark: boolean;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
@@ -103,11 +101,10 @@ function ProjectCard({
       >
         <div
           className="rounded-[28px] sm:rounded-[40px] md:rounded-[50px]
-            border border-black/10 dark:border-[#2a2d35]
+            border border-[#2a2d35]
             overflow-hidden
-            shadow-[0_8px_60px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_60px_rgba(0,0,0,0.8)]
-            transition-all duration-300"
-          style={{ background: isDark ? project.color : '#FFFFFF' }}
+            shadow-[0_8px_60px_rgba(0,0,0,0.8)]"
+          style={{ background: project.color }}
         >
           {/* ── Top Info Bar ── */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 p-4 sm:p-6 md:p-9 pb-3 sm:pb-5">
@@ -120,11 +117,11 @@ function ProjectCard({
               </span>
 
               <div className="flex flex-col gap-0.5">
-                <span className="text-black/50 dark:text-[#D7E2EA]/50 text-[9px] sm:text-xs uppercase tracking-[0.2em] font-light transition-colors duration-300">
+                <span className="text-[#D7E2EA]/50 text-[9px] sm:text-xs uppercase tracking-[0.2em] font-light">
                   {project.category}
                 </span>
                 <span
-                  className="text-black dark:text-[#D7E2EA] font-semibold uppercase tracking-wide transition-colors duration-300"
+                  className="text-[#D7E2EA] font-semibold uppercase tracking-wide"
                   style={{ fontSize: 'clamp(0.95rem, 2vw, 1.8rem)' }}
                 >
                   {project.name}
@@ -137,10 +134,10 @@ function ProjectCard({
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-black/30 dark:border-[#D7E2EA]/40 text-black dark:text-[#D7E2EA] font-medium uppercase tracking-wider
+                className="rounded-full border border-[#D7E2EA]/40 text-[#D7E2EA] font-medium uppercase tracking-wider
                   px-3.5 py-1.5 sm:px-6 sm:py-2
                   text-[10px] sm:text-xs md:text-sm
-                  transition-all duration-300 hover:bg-black dark:hover:bg-[#D7E2EA] hover:text-white dark:hover:text-[#0C0C0C]"
+                  transition-all duration-300 hover:bg-[#D7E2EA] hover:text-[#0C0C0C]"
               >
                 GitHub
               </a>
@@ -149,10 +146,10 @@ function ProjectCard({
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full bg-gradient-to-r from-[#1A1C20] to-[#5E6573] dark:from-[#646973] dark:to-[#BBCCD7] text-white dark:text-[#0C0C0C] font-medium uppercase tracking-wider
+                  className="rounded-full bg-gradient-to-r from-[#646973] to-[#BBCCD7] text-[#0C0C0C] font-medium uppercase tracking-wider
                     px-3.5 py-1.5 sm:px-6 sm:py-2
                     text-[10px] sm:text-xs md:text-sm
-                    transition-opacity duration-300 hover:opacity-90 dark:hover:opacity-80"
+                    transition-opacity duration-300 hover:opacity-80"
                 >
                   Live Demo
                 </a>
@@ -164,7 +161,7 @@ function ProjectCard({
           <div className="flex flex-col md:flex-row gap-3 md:gap-0 px-4 sm:px-6 md:px-9 pb-4 sm:pb-6 md:pb-9">
             <div className="md:w-[35%] flex flex-col justify-between gap-3 md:pr-6 pb-2 md:pb-0">
               <p
-                className="text-black/75 dark:text-[#D7E2EA]/70 font-light leading-relaxed transition-colors duration-300"
+                className="text-[#D7E2EA]/70 font-light leading-relaxed"
                 style={{ fontSize: 'clamp(0.75rem, 1.1vw, 1rem)' }}
               >
                 {project.description}
@@ -174,8 +171,8 @@ function ProjectCard({
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-[9px] sm:text-xs uppercase tracking-widest text-black/50 dark:text-[#D7E2EA]/50
-                      border border-black/15 dark:border-[#D7E2EA]/20 rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1 transition-all duration-300"
+                    className="text-[9px] sm:text-xs uppercase tracking-widest text-[#D7E2EA]/50
+                      border border-[#D7E2EA]/20 rounded-full px-2.5 py-0.5 sm:px-3 sm:py-1"
                   >
                     {t}
                   </span>
@@ -200,12 +197,12 @@ function ProjectCard({
 }
 
 /* ─── Projects Section ─── */
-export default function ProjectsSection({ isDark }: { isDark: boolean }) {
+export default function ProjectsSection() {
   return (
     <section
       id="projects"
-      className="bg-[#F4F7F9] dark:bg-[#0C0C0C] px-4 sm:px-6 md:px-10 pt-16 sm:pt-24 md:pt-32 relative z-10 -mt-10 sm:-mt-12 md:-mt-14
-        rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] transition-colors duration-300"
+      className="bg-[#0C0C0C] px-4 sm:px-6 md:px-10 pt-16 sm:pt-24 md:pt-32 relative z-10 -mt-10 sm:-mt-12 md:-mt-14
+        rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]"
     >
       {/* Section heading */}
       <h2
@@ -223,7 +220,6 @@ export default function ProjectsSection({ isDark }: { isDark: boolean }) {
             project={project}
             index={i}
             totalCards={PROJECTS.length}
-            isDark={isDark}
           />
         ))}
       </div>

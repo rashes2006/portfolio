@@ -37,12 +37,12 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="bg-white dark:bg-[#0C0C0C] text-[#0C0C0C] dark:text-[#D7E2EA] px-5 sm:px-8 md:px-10 py-16 sm:py-24 md:py-32
-        rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] transition-colors duration-300"
+      className="bg-white text-[#0C0C0C] px-5 sm:px-8 md:px-10 py-16 sm:py-24 md:py-32
+        rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px]"
     >
       {/* Heading */}
       <h2
-        className="font-black uppercase text-center text-[#0C0C0C] dark:text-[#D7E2EA] mb-10 sm:mb-16 md:mb-28 transition-colors duration-300"
+        className="font-black uppercase text-center text-[#0C0C0C] mb-10 sm:mb-16 md:mb-28"
         style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
       >
         Services
@@ -53,13 +53,13 @@ export default function ServicesSection() {
         {SERVICES.map((service, i) => (
           <FadeIn key={service.number} delay={i * 0.1} y={30}>
             <div
-              className={`flex items-start gap-4 sm:gap-8 md:gap-12 py-5 sm:py-10 md:py-12 border-b border-black/15 dark:border-white/15 transition-all duration-300 ${
-                i === 0 ? 'border-t' : ''
+              className={`flex items-start gap-4 sm:gap-8 md:gap-12 py-5 sm:py-10 md:py-12 border-b border-black/15 ${
+                i === 0 ? 'border-t border-t-black/15' : ''
               }`}
             >
               {/* Number */}
               <span
-                className="font-black text-[#0C0C0C] dark:text-[#D7E2EA] flex-shrink-0 leading-none transition-colors duration-300"
+                className="font-black text-[#0C0C0C] flex-shrink-0 leading-none"
                 style={{ fontSize: 'clamp(2.2rem, 8vw, 140px)' }}
               >
                 {service.number}
@@ -68,13 +68,13 @@ export default function ServicesSection() {
               {/* Name + Description */}
               <div className="flex flex-col justify-center gap-2 sm:gap-3 pt-1 sm:pt-4 md:pt-6">
                 <h3
-                  className="font-medium uppercase text-[#0C0C0C] dark:text-[#D7E2EA] transition-colors duration-300"
+                  className="font-medium uppercase text-[#0C0C0C]"
                   style={{ fontSize: 'clamp(0.95rem, 2vw, 2.1rem)' }}
                 >
                   {service.name}
                 </h3>
                 <p
-                  className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] dark:text-[#D7E2EA] opacity-60 dark:opacity-75 transition-colors duration-300"
+                  className="font-light leading-relaxed max-w-2xl text-[#0C0C0C] opacity-60"
                   style={{ fontSize: 'clamp(0.8rem, 1.4vw, 1.25rem)' }}
                 >
                   {service.description}
