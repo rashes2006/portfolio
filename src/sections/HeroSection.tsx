@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Sun, Moon } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import ContactButton from '../components/ContactButton';
@@ -13,11 +13,8 @@ interface HeroSectionProps {
 
 export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
   const heroRef = useRef<HTMLDivElement>(null);
-  const [hasHover, setHasHover] = useState(false);
 
   useEffect(() => {
-    setHasHover(window.matchMedia('(hover: hover)').matches);
-
     const hero = heroRef.current;
     if (!hero) return;
 
@@ -49,7 +46,7 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
     };
   }, []);
 
-  const showCursor = isDark && hasHover;
+  const showCursor = isDark;
 
   return (
     <section
@@ -137,7 +134,7 @@ export default function HeroSection({ isDark, toggleTheme }: HeroSectionProps) {
         <div
           className="absolute inset-0 pointer-events-none z-10"
           style={{
-            background: 'radial-gradient(circle 200px at var(--mouse-x) var(--mouse-y), transparent 0%, rgba(235, 70, 10, 0.08) 60%, rgba(12, 12, 12, 1) 75%)',
+            background: 'radial-gradient(circle var(--spotlight-radius) at var(--mouse-x) var(--mouse-y), transparent 0%, rgba(235, 70, 10, 0.08) 60%, rgba(12, 12, 12, 1) 75%)',
           }}
         />
       )}

@@ -13,11 +13,24 @@
 :root {
   --hover-char-color: #7621B0;
   --hover-char-glow: rgba(118, 33, 176, 0.4);
+  --spotlight-radius: 110px;
 }
 
 .dark {
   --hover-char-color: #BBCCD7;
   --hover-char-glow: rgba(187, 204, 215, 0.8);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --spotlight-radius: 150px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --spotlight-radius: 200px;
+  }
 }
 
 html,
